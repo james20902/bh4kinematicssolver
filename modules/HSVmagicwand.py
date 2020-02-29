@@ -1,9 +1,10 @@
 import numpy as np
 import cv2
+import main
 
-def pick_color(event,x,y,flags,param,array):
+def pick_color(event,x,y,flags,param):
     if event == cv2.EVENT_LBUTTONDOWN:
-        pixel = array[y,x]
+        pixel = main.getHSVArray()[y,x]
 
         #HUE, SATURATION, AND VALUE (BRIGHTNESS) RANGES. TOLERANCE COULD BE ADJUSTED.
         upper =  np.array([pixel[0] + 10, pixel[1] + 10, pixel[2] + 40])

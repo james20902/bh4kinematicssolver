@@ -2,6 +2,11 @@ import numpy as np
 import cv2
 from modules import blur, HSVmagicwand
 
+hsvarray = None
+
+def getHSVArray():
+    return hsvarray
+    
 #cappin
 cap = cv2.VideoCapture(0)
 
@@ -10,7 +15,7 @@ while(True):
     ret, frame = cap.read()
 
     hsvarray = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
-    cv2.setMouseCallback("HSV", pick_color(array=hsvarray))
+    cv2.setMouseCallback("frame", HSVmagicwand.pick_color)
 
     modifiedFrame = blur.getSquareBlur(frame, 5)
 
